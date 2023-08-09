@@ -1,0 +1,29 @@
+import "./commands";
+
+
+describe('Warehouse Creation', () => {
+    beforeEach(() => {
+      // Perform any setup or common actions needed before each test case
+    });
+  
+    it.only('should select the Warehouse from dropdown location', () => {
+      cy.visit('https://fe-beta.fleetenable.com');
+  
+      cy.wait(5000); // Wait for 5 seconds
+
+      const name = new type(arguments); Login();
+      ln.setEmail("nm@fleetenable.com");
+      ln.setPassword("test1234");
+      ln.setclickSubmit();
+  
+      cy.get('@ant-menu-item').click();
+  
+      // Add your assertions or further interactions here
+    });
+  
+    // Add more test cases for Warehouse Creation if needed
+  
+    afterEach(() => {
+      // Perform any cleanup or common actions needed after each test case
+    });
+  });
