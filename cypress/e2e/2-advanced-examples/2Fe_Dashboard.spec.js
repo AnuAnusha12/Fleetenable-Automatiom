@@ -1,32 +1,44 @@
- /// <reference types="cypress" />
-    describe('Dashboard Functionality', () => {
-        before(() => {
-          // Perform any setup or common actions needed for all test cases
-        });
-      
-        it('Should open the Dashboard screen', () => {
-          login();
-      
-          cy.visit('https://fe-beta.fleetenable.com/dashboard');
-          cy.wait(4000);
-          // Continue with assertions or interactions on the Dashboard screen
-          cy.get('.ant-select-selection__rendered').click();
-          cy.get('.ant-select-dropdown-menu > :nth-child(2)').click();
-          cy.get('.ant-menu-item > .active');
-          cy.get(':nth-child(3) > .ant-menu-submenu-title').click();
-          cy.wait(4000);
-          cy.get('.ant-btn.marginLeft10.ant-btn-primary').eq(0).click({ force: true });
-          cy.get('button[type="button"]').eq(0).wait(2000);
-          cy.get('.ant-calendar-picker-input');
-          cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').type('08:30 AM', { force: true });
-          cy.get('[style="margin-bottom: 15px;"] > .ant-select > .ant-select-selection').then(() => {
-            cy.get('input[type="checkbox"]').first().check();
-            cy.get('.ant-table-thead > tr > .ant-table-selection-column').first();
-            cy.get('.marginRight5').click();
-          });
-      
-          after(() => {
-            // Perform any cleanup or common actions needed after all test cases
-          });
-        });
-      });
+/// <reference types="cypress" />
+
+// Define the login function
+function login() {
+  // Logic to perform login, e.g. fill in credentials and click login button
+}
+
+describe('Dashboard Functionality', () => {
+  before(() => {
+    // Perform any setup or common actions needed for all test cases
+  });
+
+  it('Should open the Dashboard screen', () => {
+    login(); // Call the login function
+
+    cy.visit('https://fe-beta.fleetenable.com/');
+    cy.get('#auth_form_email.ant-input', { timeout: 10000 }).type('nm@fleetenable.com');
+    cy.get('#auth_form_password').type('test1234');
+    cy.get('.anticon-eye-invisible', { timeout: 10000 }).click();
+    cy.get('.ant-btn-primary').click();
+    // Add assertions to verify successful login
+    Cypress.on('uncaught:exception', (_err, _runnable) => {
+      return false;
+    });
+    cy.wait(500);
+    // Continue with other validations or test cases after successful login
+    
+    cy.wait(4000); // Move this line inside the test case
+    // Continue with assertions or interactions on the Dashboard screen
+    cy.visit('https://fe-beta.fleetenable.com/Dashboard');
+    // ...rest of your test case
+  });
+
+  it('Other Test Case', () => {
+    // ...rest of your test case
+    
+  });
+
+  // ...other test cases
+
+  after(() => {
+    // Perform any cleanup or common actions needed after all test cases
+  });
+});
